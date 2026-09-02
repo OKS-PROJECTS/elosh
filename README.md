@@ -62,4 +62,5 @@ app re-skins, light and dark. The theme toggle in the header persists to
 ## License
 
 MIT — see [LICENSE](LICENSE). See [CHANGELOG.md](CHANGELOG.md) for release history.
-Live demo · [Repository](https://github.com/OKS-PROJECTS/elosh)
+
+[Live demo](https://oks-projects.github.io/elosh/) · [Repository](https://github.com/OKS-PROJECTS/elosh)
