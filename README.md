@@ -4,8 +4,10 @@ An HR & workforce admin dashboard template built **entirely with [oks-ui](https:
 button, table, chart, form control, menu and shell element is an oks-ui primitive
 or composed from oks-ui parts. No other UI or charting library.
 
-- **Live demo:** _pending first deploy_
-- **Repository:** _pending publish_
+- **Live demo:** https://oks-projects.github.io/elosh/
+- **Repository:** https://github.com/OKS-PROJECTS/elosh
+
+![Elosh employee dashboard](.github/media/dashboard.png)
 
 ## Stack
 
@@ -51,6 +53,13 @@ Repoint the `--oks-color-primary-*` ramp in `src/styles/theme.css` and the whole
 app re-skins, light and dark. The theme toggle in the header persists to
 `localStorage`.
 
+## Screenshots
+
+| Admin dashboard | Employees | Component gallery |
+| --- | --- | --- |
+| ![](.github/media/admin.png) | ![](.github/media/employees.png) | ![](.github/media/components.png) |
+
 ## License
 
 MIT — see [LICENSE](LICENSE). See [CHANGELOG.md](CHANGELOG.md) for release history.
+Live demo · [Repository](https://github.com/OKS-PROJECTS/elosh)

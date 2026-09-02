@@ -5,7 +5,11 @@ All notable changes to Elosh are documented here. Format based on
 
 > Requires oks-ui ^1.1.2
 
-## [Unreleased]
+## [1.0.0] — 2026-09-02
+
+Every `NAV_ROUTES` entry resolves to a real page — `ComingSoon` survives only as the
+`path="*"` catch-all. Lint + build green; zero JS errors and zero horizontal overflow
+(375px) across all routes. Published to `OKS-PROJECTS` with a GitHub Pages demo.
 
 ### Added
 - App shell: recursive sidebar (oks-ui `Nav`), header control cluster, mobile drawer,
