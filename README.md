@@ -7,8 +7,6 @@ or composed from oks-ui parts. No other UI or charting library.
 - **Live demo:** _pending first deploy_
 - **Repository:** _pending publish_
 
-![Elosh dashboard](.github/media/dashboard.png)
-
 ## Stack
 
 | | |
