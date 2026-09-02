@@ -1,0 +1,313 @@
+/* ============================================================================
+   Elosh design tokens — ported onto oks-ui's CSS-variable system.
+   oks-ui token blocks are :where()-wrapped (zero specificity) since 1.1.2,
+   so a bare :root override here wins in both light and dark.
+   ========================================================================== */
+
+:root {
+  /* --- Brand ramp (primary = #F26522) ---------------------------------- */
+  --oks-palette-brand-50: #fef1eb;
+  --oks-palette-brand-100: #fddfd0;
+  --oks-palette-brand-200: #fbc2a6;
+  --oks-palette-brand-300: #f89d6f;
+  --oks-palette-brand-400: #f57f47;
+  --oks-palette-brand-500: #f26522;
+  --oks-palette-brand-600: #e14e0c;
+  --oks-palette-brand-700: #bb3d0c;
+  --oks-palette-brand-800: #953311;
+  --oks-palette-brand-900: #782e12;
+  --oks-palette-brand-950: #411407;
+
+  --oks-color-primary-50: var(--oks-palette-brand-50);
+  --oks-color-primary-100: var(--oks-palette-brand-100);
+  --oks-color-primary-200: var(--oks-palette-brand-200);
+  --oks-color-primary-300: var(--oks-palette-brand-300);
+  --oks-color-primary-400: var(--oks-palette-brand-400);
+  --oks-color-primary-500: var(--oks-palette-brand-500);
+  --oks-color-primary-600: var(--oks-palette-brand-600);
+  --oks-color-primary-700: var(--oks-palette-brand-700);
+  --oks-color-primary-800: var(--oks-palette-brand-800);
+  --oks-color-primary-900: var(--oks-palette-brand-900);
+  --oks-color-primary-950: var(--oks-palette-brand-950);
+
+  /* --- Secondary (dark teal #0C4B5E) --------------------------------- */
+  --oks-color-secondary-50: #eaf1f3;
+  --oks-color-secondary-100: #cbdee3;
+  --oks-color-secondary-200: #9ec1ca;
+  --oks-color-secondary-300: #6fa3b0;
+  --oks-color-secondary-400: #3f7c8d;
+  --oks-color-secondary-500: #0c4b5e;
+  --oks-color-secondary-600: #0a4051;
+  --oks-color-secondary-700: #083240;
+  --oks-color-secondary-800: #062632;
+  --oks-color-secondary-900: #041b23;
+  --oks-color-secondary-950: #021016;
+
+  /* --- Success (#03C95A) ------------------------------------------------ */
+  --oks-color-success-50: #e8faf0;
+  --oks-color-success-100: #c2f2d8;
+  --oks-color-success-200: #86e5b0;
+  --oks-color-success-300: #49d888;
+  --oks-color-success-400: #1fcf6e;
+  --oks-color-success-500: #03c95a;
+  --oks-color-success-600: #02a448;
+  --oks-color-success-700: #027e38;
+  --oks-color-success-800: #01602b;
+  --oks-color-success-900: #014d23;
+  --oks-color-success-950: #002912;
+
+  /* --- Warning (#FFC107) ---------------------------------------------- */
+  --oks-color-warning-50: #fff9e9;
+  --oks-color-warning-100: #fff0c2;
+  --oks-color-warning-200: #ffe28a;
+  --oks-color-warning-300: #ffd452;
+  --oks-color-warning-400: #ffc922;
+  --oks-color-warning-500: #ffc107;
+  --oks-color-warning-600: #d69e00;
+  --oks-color-warning-700: #a87c00;
+  --oks-color-warning-800: #7a5a00;
+  --oks-color-warning-900: #5c4400;
+  --oks-color-warning-950: #302300;
+
+  /* --- Danger (#E70D0D) ---------------------------------------------- */
+  --oks-color-danger-50: #fceaea;
+  --oks-color-danger-100: #f8c6c6;
+  --oks-color-danger-200: #f19595;
+  --oks-color-danger-300: #ea6363;
+  --oks-color-danger-400: #e53838;
+  --oks-color-danger-500: #e70d0d;
+  --oks-color-danger-600: #c40808;
+  --oks-color-danger-700: #970808;
+  --oks-color-danger-800: #6e0808;
+  --oks-color-danger-900: #560909;
+  --oks-color-danger-950: #2e0202;
+
+  /* --- Info (#1B84FF) ----------------------------------------------- */
+  --oks-color-info-50: #ebf4ff;
+  --oks-color-info-100: #cfe4ff;
+  --oks-color-info-200: #a3ccff;
+  --oks-color-info-300: #6daeff;
+  --oks-color-info-400: #4299ff;
+  --oks-color-info-500: #1b84ff;
+  --oks-color-info-600: #0065e0;
+  --oks-color-info-700: #004ead;
+  --oks-color-info-800: #003d87;
+  --oks-color-info-900: #00306b;
+  --oks-color-info-950: #001a3b;
+
+  /* --- Radius (reference is tight: 5px cards / buttons) --------------- */
+  --oks-radius-sm: 4px;
+  --oks-radius-md: 5px;
+  --oks-radius-lg: 6px;
+  --oks-radius-xl: 8px;
+  --oks-radius-2xl: 12px;
+
+  /* --- Type ---------------------------------------------------------- */
+  --oks-font-sans: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --oks-font-family: var(--oks-font-sans);
+
+  /* ================================================================
+     The --app-* semantic layer — composed ui/ components read ONLY these
+     ============================================================= */
+  --app-bg: #f8f9fa;
+  --app-surface: #ffffff;
+  --app-surface-2: #f6f7f9;
+  --app-border: #e9ecef;
+  --app-border-strong: #dee2e6;
+
+  --app-fg-strong: #111827;
+  --app-fg: #4b5563;
+  --app-fg-muted: #6b7280;
+  --app-fg-subtle: #9ca3af;
+  --app-heading: #202c4b;
+
+  --app-card-radius: 6px;
+  --app-card-border: 1px solid var(--app-border);
+  --app-card-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+
+  /* sidebar / menu */
+  --app-menu-bg: #ffffff;
+  --app-menu-fg: #111827;
+  --app-menu-fg-muted: #67748e;
+  --app-menu-active-bg: #f4f5f7;
+  --app-menu-active-fg: #f26522;
+  --app-menu-border: #ededed;
+  --app-menu-heading: #99a1b7;
+
+  /* header */
+  --app-header-bg: #ffffff;
+  --app-header-height: 60px;
+  --app-header-shadow: none;
+  --app-header-border: #ededed;
+
+  /* accent aliases */
+  --app-accent: #f26522;
+  --app-accent-soft: #fef1eb;
+  --app-ok: #03c95a;
+  --app-ok-soft: #e8faf0;
+  --app-warn: #ffc107;
+  --app-warn-soft: #fff9e9;
+  --app-bad: #e70d0d;
+  --app-bad-soft: #fae7e7;
+  --app-info: #1b84ff;
+  --app-info-soft: #ebf4ff;
+  --app-purple: #ab47bc;
+  --app-purple-soft: #f7eef9;
+  --app-pink: #fd3995;
+  --app-pink-soft: #ffedf6;
+  --app-teal: #02c7d2;
+  --app-teal-soft: #e6f9ff;
+
+  /* semantic role aliases (reference other --app-* so they cascade to dark) */
+  --app-primary: var(--app-accent);
+  --app-primary-soft: var(--app-accent-soft);
+  --app-success: var(--app-ok);
+  --app-success-soft: var(--app-ok-soft);
+  --app-warning: var(--app-warn);
+  --app-warning-soft: var(--app-warn-soft);
+  --app-danger: var(--app-bad);
+  --app-danger-soft: var(--app-bad-soft);
+
+  /* oks-ui leaves these light-only — set for both themes */
+  --oks-color-surface: var(--app-surface);
+  --oks-color-border: var(--app-border);
+  --oks-form-field-bg: var(--app-surface);
+  --oks-form-field-fg: var(--app-fg-strong);
+  --oks-form-field-placeholder: var(--app-fg-subtle);
+  --oks-form-field-label: var(--app-fg-strong);
+  --oks-form-field-muted: var(--app-fg-muted);
+  --oks-form-field-border: var(--app-border-strong);
+  --oks-form-field-border-hover: #c9ced4;
+}
+
+/* ============================================================================
+   Dark theme — redefine the whole --app-* layer + oks-ui light-only tokens
+   ========================================================================== */
+:root[data-theme='dark'] {
+  --app-bg: #0b0f14;
+  --app-surface: #151b23;
+  --app-surface-2: #1c232d;
+  --app-border: #262f3a;
+  --app-border-strong: #313c49;
+
+  --app-fg-strong: #f1f5f9;
+  --app-fg: #c4ccd6;
+  --app-fg-muted: #94a1b2;
+  --app-fg-subtle: #6b7684;
+  --app-heading: #e8edf3;
+
+  --app-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+  --app-menu-bg: #151b23;
+  --app-menu-fg: #e8edf3;
+  --app-menu-fg-muted: #94a1b2;
+  --app-menu-active-bg: #1f2731;
+  --app-menu-active-fg: #f8895a;
+  --app-menu-border: #262f3a;
+  --app-menu-heading: #6b7684;
+
+  --app-header-bg: #151b23;
+  --app-header-border: #262f3a;
+
+  --app-accent-soft: #2a1a10;
+  --app-ok-soft: #0d2a1b;
+  --app-warn-soft: #2c2410;
+  --app-bad-soft: #2e1414;
+  --app-info-soft: #10233c;
+  --app-purple-soft: #241628;
+  --app-pink-soft: #2a1220;
+  --app-teal-soft: #0c2529;
+  --app-danger-soft: #2e1414;
+
+  --oks-color-surface: var(--app-surface);
+  --oks-color-border: var(--app-border);
+  --oks-form-field-bg: var(--app-surface-2);
+  --oks-form-field-fg: var(--app-fg-strong);
+  --oks-form-field-placeholder: var(--app-fg-subtle);
+  --oks-form-field-label: var(--app-fg-strong);
+  --oks-form-field-muted: var(--app-fg-muted);
+  --oks-form-field-border: var(--app-border-strong);
+  --oks-form-field-border-hover: #3d4a59;
+}
+
+/* ============================================================================
+   Global oks-ui patches (each is an OKS-UI-FEEDBACK.md entry)
+   ========================================================================== */
+
+/* Chart renders its own bordered/padded <figure> — every chart sits in a Surface */
+.oksChart {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* donut always paints a centre total with no opt-out */
+.donut-no-center svg > g > text[text-anchor='middle'][dominant-baseline='middle'] {
+  display: none;
+}
+
+/* bordered/ghost + default colour = mid-grey that fails contrast on dark */
+.oksButton[data-variant='bordered'][data-color='default'],
+.oksButton[data-variant='ghost'][data-color='default'] {
+  --oks-button-tone: var(--app-fg-muted);
+  color: var(--app-fg) !important;
+}
+.oksButton[data-variant='bordered'][data-color='default'] {
+  border-color: var(--app-border-strong) !important;
+}
+
+body {
+  background: var(--app-bg);
+  color: var(--app-fg);
+  font-family: var(--oks-font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+::selection {
+  background: var(--app-accent-soft);
+  color: var(--app-accent);
+}
+
+/* ---- Sidebar Nav (oks-ui <Nav>) skinned to the reference treatment ---- */
+.oksNav {
+  --oks-nav-fg: var(--app-menu-fg);
+  --oks-nav-fg-active: var(--app-menu-active-fg);
+  --oks-nav-fg-hover: var(--app-menu-active-fg);
+  --oks-nav-bg-active: var(--app-menu-active-bg);
+  --oks-nav-bg-hover: var(--app-surface-2);
+  --oks-nav-item-radius: 6px;
+  --oks-nav-gap: 2px;
+  font-size: 14px;
+}
+.oksNavSectionTitle {
+  color: var(--app-menu-heading) !important;
+  margin-top: 14px;
+  font-size: 10px !important;
+}
+.oksNavItem[data-active='true'] > .oksNavLink {
+  font-weight: 500;
+  box-shadow: inset 3px 0 0 0 var(--app-menu-active-fg);
+}
+.oksNavItem[data-active='true'] > .oksNavLink .oksNavIcon {
+  color: var(--app-menu-active-fg);
+}
+.oksNavLink {
+  font-weight: 400;
+  color: var(--app-menu-fg);
+}
+
+/* thin scrollbars in the shell */
+.app-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--app-border-strong) transparent;
+}
+.app-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.app-scroll::-webkit-scrollbar-thumb {
+  background: var(--app-border-strong);
+  border-radius: 9999px;
+}

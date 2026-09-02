@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+/* Tailwind's dark: variant follows [data-theme="dark"] on <html> */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  border-color: var(--app-border);
+}
