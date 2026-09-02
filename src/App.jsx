@@ -26,6 +26,10 @@ const NotesApp = lazy(() => import('./Pages/Apps/NotesApp'))
 const TodoApp = lazy(() => import('./Pages/Apps/TodoApp'))
 const FilesApp = lazy(() => import('./Pages/Apps/FilesApp'))
 
+const EmployeesGrid = lazy(() => import('./Pages/HRM/EmployeesGrid'))
+const RolesPage = lazy(() => import('./Pages/Admin/RolesPage'))
+const TicketDetailPage = lazy(() => import('./Pages/Admin/TicketDetailPage'))
+
 const ProfilePage = lazy(() => import('./Pages/Content/ProfilePage'))
 const PricingPage = lazy(() => import('./Pages/Content/MiscPages').then((m) => ({ default: m.PricingPage })))
 const FaqPage = lazy(() => import('./Pages/Content/MiscPages').then((m) => ({ default: m.FaqPage })))
@@ -68,6 +72,9 @@ const EXPLICIT = {
   '/content/faq': <FaqPage />,
   '/crm/pipeline': <KanbanApp />,
   '/admin/knowledge-base': <FaqPage />,
+  '/hrm/employees-grid': <EmployeesGrid />,
+  '/admin/roles': <RolesPage />,
+  '/admin/tickets/detail': <TicketDetailPage />,
 }
 
 // dashboards driven by DASHBOARD_CONFIGS
