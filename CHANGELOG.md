@@ -5,6 +5,13 @@ All notable changes to Elosh are documented here. Format based on
 
 > Requires oks-ui ^1.1.2
 
+## [1.0.1] — 2026-09-15
+
+### Fixed
+- Employee Dashboard profile banner now matches the reference's single-line
+  info row instead of a hand-invented 4-column icon grid (Step 6a fidelity pass).
+- `PageHeader` composes oks-ui's `<PageTitle>` instead of a raw `<h1>` (Rule 1).
+
 ## [1.0.0] — 2026-09-02
 
 Every `NAV_ROUTES` entry resolves to a real page — `ComingSoon` survives only as the
