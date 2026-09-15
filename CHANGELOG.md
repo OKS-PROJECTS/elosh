@@ -5,6 +5,36 @@ All notable changes to Elosh are documented here. Format based on
 
 > Requires oks-ui ^1.1.2
 
+## [1.1.0] — 2026-09-15
+
+Step 6b design-quality sweep: states, dark mode, and a real mobile pass on the
+deep app pages, plus one worked FormPage example.
+
+### Added
+- `FormPage` archetype wired to a real route (`/hrm/employees/new`) — the
+  Employees list's "Add employee" now navigates to a genuine create form
+  instead of a toast; `FormPage` gained an optional `backTo` affordance.
+
+### Fixed
+- **`Checkbox` inside a flex row collapsed its siblings** — oks-ui's `Checkbox`
+  wrapper is `width: 100%` unconditionally, which ate ~93% of a To Do list row
+  at wide viewports, squeezing the task label into a single-character column.
+  Fixed with an explicit `w-auto shrink-0` override; logged upstream (oks-ui
+  feedback B9).
+- Chat and Email are now real single-pane-on-mobile experiences: the thread/
+  mail list shows first below the `lg` breakpoint, tapping an item reveals the
+  conversation/reading pane with a "Back" affordance, matching the desktop
+  side-by-side layout at `lg` and up. Previously the reading pane showed
+  unconditionally, so mobile users had no way to browse other threads/mail.
+- Every raw "nav row" `<button>` (chat threads, email folders/mail, notes)
+  now has explicit hover and focus-visible states; the email folder list
+  gained a working active-selection state (previously nothing indicated the
+  current folder).
+- Plain inline text links (auth footers, "forgot password") now have a
+  consistent hover/focus treatment via a shared `.elosh-link` class.
+- The two-step verification page's "Resend code" affordance is now a real
+  oks-ui `Button` instead of an unstyled raw `<button>`.
+
 ## [1.0.1] — 2026-09-15
 
 ### Fixed

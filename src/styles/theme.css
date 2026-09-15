@@ -311,3 +311,34 @@ body {
   background: var(--app-border-strong);
   border-radius: 9999px;
 }
+
+/* ---- Raw "nav row" buttons (chat/email/notes list rows — §4 exception) ----
+   States rubric: hover + focus-visible + transition. Leave `background`
+   unset (not "transparent") inline when inactive so this hover rule can win. */
+.elosh-row-btn {
+  transition:
+    background-color 0.12s ease,
+    color 0.12s ease;
+}
+.elosh-row-btn:hover {
+  background: var(--app-surface-2);
+}
+.elosh-row-btn:focus-visible {
+  outline: 2px solid var(--app-accent);
+  outline-offset: -2px;
+}
+
+/* Plain inline text links (auth footers, card titles-as-links). */
+.elosh-link {
+  color: var(--app-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+.elosh-link:hover {
+  text-decoration: underline;
+}
+.elosh-link:focus-visible {
+  outline: 2px solid var(--app-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

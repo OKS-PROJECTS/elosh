@@ -28,8 +28,9 @@ export default function NotesApp() {
               <li key={n.id}>
                 <button
                   onClick={() => setActive(n)}
-                  className="flex w-full flex-col gap-1 px-4 py-3 text-left"
-                  style={{ background: active.id === n.id ? 'var(--app-surface-2)' : 'transparent' }}
+                  aria-current={active.id === n.id ? 'true' : undefined}
+                  className="elosh-row-btn flex w-full flex-col gap-1 px-4 py-3 text-left"
+                  style={{ background: active.id === n.id ? 'var(--app-surface-2)' : undefined }}
                 >
                   <span className="flex items-center gap-1.5 text-[13px] font-medium" style={{ color: 'var(--app-fg-strong)' }}>
                     {n.pinned && <Pin size={12} style={{ color: 'var(--app-accent)' }} />}

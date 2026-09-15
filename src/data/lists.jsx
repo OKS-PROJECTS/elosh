@@ -46,6 +46,7 @@ export const LIST_CONFIGS = {
       { label: 'New this month', value: '6', trend: 'up', delta: '+2' },
     ],
     createLabel: 'Add employee',
+    createTo: '/hrm/employees/new',
   },
   '/hrm/departments': {
     title: 'Departments',

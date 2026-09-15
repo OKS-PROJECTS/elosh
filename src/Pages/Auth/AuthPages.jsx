@@ -8,14 +8,14 @@ export function Login() {
     <AuthLayout
       title="Sign in"
       subtitle="Welcome back. Enter your details to continue."
-      footer={<>New to Elosh? <Link to="/auth/register" style={{ color: 'var(--app-accent)' }}>Create an account</Link></>}
+      footer={<>New to Elosh? <Link to="/auth/register" className="elosh-link">Create an account</Link></>}
     >
       <Form onSubmit={() => navigate('/dashboard/employee')} className="flex flex-col gap-4">
         <FormFieldSet type="email" name="email" label="Email" validation={{ rules: { required: true, email: true } }} />
         <FormFieldSet type="password" name="password" label="Password" validation={{ rules: { required: true } }} />
         <div className="flex items-center justify-between">
           <Checkbox label="Remember me" />
-          <Link to="/auth/forgot-password" className="text-[13px]" style={{ color: 'var(--app-accent)' }}>
+          <Link to="/auth/forgot-password" className="elosh-link text-[13px]">
             Forgot password?
           </Link>
         </div>
@@ -33,7 +33,7 @@ export function Register() {
     <AuthLayout
       title="Create your account"
       subtitle="Start your 14-day trial. No card required."
-      footer={<>Already have an account? <Link to="/auth/login" style={{ color: 'var(--app-accent)' }}>Sign in</Link></>}
+      footer={<>Already have an account? <Link to="/auth/login" className="elosh-link">Sign in</Link></>}
     >
       <Form onSubmit={() => navigate('/dashboard/employee')} className="flex flex-col gap-4">
         <FormFieldSet type="text" name="name" label="Full name" validation={{ rules: { required: true } }} />
@@ -53,7 +53,7 @@ export function ForgotPassword() {
     <AuthLayout
       title="Forgot password"
       subtitle="Enter your email and we'll send a reset link."
-      footer={<Link to="/auth/login" style={{ color: 'var(--app-accent)' }}>Back to sign in</Link>}
+      footer={<Link to="/auth/login" className="elosh-link">Back to sign in</Link>}
     >
       <Form onSubmit={() => toast.success('Reset link sent')} className="flex flex-col gap-4">
         <FormFieldSet type="email" name="email" label="Email" validation={{ rules: { required: true, email: true } }} />
@@ -90,7 +90,10 @@ export function TwoStep() {
           Verify
         </Button>
         <p className="text-center text-[13px]" style={{ color: 'var(--app-fg-muted)' }}>
-          Didn't get a code? <button className="font-medium" style={{ color: 'var(--app-accent)' }}>Resend</button>
+          Didn't get a code?{' '}
+          <Button variant="link" color="primary" size="sm" className="px-0" onPress={() => toast.info('Code resent')}>
+            Resend
+          </Button>
         </p>
       </div>
     </AuthLayout>

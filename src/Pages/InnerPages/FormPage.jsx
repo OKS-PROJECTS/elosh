@@ -1,16 +1,40 @@
+import { useNavigate } from 'react-router-dom'
 import { Form, FormFieldSet, Button, toast } from 'oks-ui'
+import { ArrowLeft } from 'lucide-react'
 import { PageHeader, Surface } from '../../Components/ui'
 
 /**
  * Config-driven create/edit form.
- * config: { title, subtitle, groups: [{ title, fields: [FormFieldSet props] }], submitLabel }
+ * config: { title, subtitle, groups: [{ title, fields: [FormFieldSet props] }],
+ *           submitLabel, backTo? }
  */
 export default function FormPage({ config }) {
+  const navigate = useNavigate()
+
   return (
     <>
-      <PageHeader title={config.title} subtitle={config.subtitle} />
+      <PageHeader
+        title={config.title}
+        subtitle={config.subtitle}
+        actions={
+          config.backTo && (
+            <Button
+              size="sm"
+              variant="bordered"
+              color="default"
+              startContent={<ArrowLeft size={14} />}
+              onPress={() => navigate(config.backTo)}
+            >
+              Back to list
+            </Button>
+          )
+        }
+      />
       <Form
-        onSubmit={() => toast.success(`${config.submitLabel ?? 'Saved'}`)}
+        onSubmit={() => {
+          toast.success(`${config.submitLabel ?? 'Saved'}`)
+          if (config.backTo) navigate(config.backTo)
+        }}
         initialValues={config.initialValues}
         className="max-w-3xl"
       >

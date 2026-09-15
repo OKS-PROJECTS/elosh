@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { StatGroup, Stat, Button } from 'oks-ui'
 import { Download } from 'lucide-react'
 import { toast } from 'oks-ui'
@@ -6,10 +7,13 @@ import { PageHeader, DataTable } from '../../Components/ui'
 
 /**
  * Config-driven list / CRUD page.
- * config: { title, subtitle, columns, rows, searchKeys?, filters?, stats?, createLabel? }
+ * config: { title, subtitle, columns, rows, searchKeys?, filters?, stats?,
+ *           createLabel?, createTo? } — createTo routes to a FormPage instead
+ *           of the default toast (see FORM_CONFIGS).
  */
 export default function ListPage({ config }) {
   const [rows] = useState(config.rows)
+  const navigate = useNavigate()
 
   return (
     <>
@@ -54,7 +58,11 @@ export default function ListPage({ config }) {
         filters={config.filters ?? []}
         getRowKey={config.getRowKey ?? ((r) => r.id)}
         createLabel={config.createLabel ?? 'Add new'}
-        onCreate={() => toast.info(`New ${config.title.replace(/s$/, '')} form`)}
+        onCreate={
+          config.createTo
+            ? () => navigate(config.createTo)
+            : () => toast.info(`New ${config.title.replace(/s$/, '')} form`)
+        }
       />
     </>
   )

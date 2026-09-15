@@ -42,6 +42,7 @@ export default function TodoApp() {
           {items.map((it) => (
             <li key={it.id} className="flex items-center gap-3 py-3">
               <Checkbox
+                className="w-auto shrink-0"
                 checked={it.done}
                 onChange={(v) => setItems((x) => x.map((t) => (t.id === it.id ? { ...t, done: v } : t)))}
                 aria-label={it.text}

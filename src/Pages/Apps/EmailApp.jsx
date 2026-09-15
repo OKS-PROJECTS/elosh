@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { Button, Avatar, Chip } from 'oks-ui'
-import { Inbox, Send, FileText, Trash2, Star, Reply } from 'lucide-react'
+import { Inbox, Send, FileText, Trash2, Star, Reply, ArrowLeft } from 'lucide-react'
 import { PageHeader, Surface } from '../../Components/ui'
 import { employees } from '../../data/mock'
 import { date } from '../../lib/format'
+import { useIsDesktop } from '../../lib/useMediaQuery'
 
 const FOLDERS = [
   { key: 'inbox', label: 'Inbox', icon: Inbox, count: 12 },
@@ -36,7 +37,11 @@ const MAILS = employees.slice(0, 10).map((e, i) => ({
 }))
 
 export default function EmailApp() {
-  const [active, setActive] = useState(MAILS[0])
+  const isDesktop = useIsDesktop()
+  const [folder, setFolder] = useState('inbox')
+  const [active, setActive] = useState(null)
+  const openMail = active ?? MAILS[0]
+  const showList = isDesktop || active === null
 
   return (
     <>
@@ -50,13 +55,19 @@ export default function EmailApp() {
             {FOLDERS.map((f) => (
               <button
                 key={f.key}
-                className="flex items-center gap-2.5 rounded-md px-2.5 py-2 text-left text-[13px]"
-                style={{ color: 'var(--app-fg)' }}
+                onClick={() => setFolder(f.key)}
+                aria-current={folder === f.key ? 'true' : undefined}
+                className="elosh-row-btn flex items-center gap-2.5 rounded-md px-2.5 py-2 text-left text-[13px]"
+                style={{
+                  color: folder === f.key ? 'var(--app-accent)' : 'var(--app-fg)',
+                  background: folder === f.key ? 'var(--app-accent-soft)' : undefined,
+                  fontWeight: folder === f.key ? 500 : 400,
+                }}
               >
                 <f.icon size={15} />
                 <span className="flex-1">{f.label}</span>
                 {f.count && (
-                  <span className="text-xs" style={{ color: 'var(--app-fg-muted)' }}>
+                  <span className="text-xs" style={{ color: folder === f.key ? 'var(--app-accent)' : 'var(--app-fg-muted)' }}>
                     {f.count}
                   </span>
                 )}
@@ -64,15 +75,19 @@ export default function EmailApp() {
             ))}
           </nav>
 
-          <ul className="app-scroll hidden overflow-y-auto border-r md:block" style={{ borderColor: 'var(--app-border)' }}>
+          <ul
+            className="app-scroll overflow-y-auto border-r md:block"
+            style={{ borderColor: 'var(--app-border)', display: showList ? 'block' : 'none' }}
+          >
             {MAILS.map((m) => (
               <li key={m.id}>
                 <button
                   onClick={() => setActive(m)}
-                  className="flex w-full flex-col gap-1 border-b px-3.5 py-3 text-left"
+                  aria-current={openMail.id === m.id ? 'true' : undefined}
+                  className="elosh-row-btn flex w-full flex-col gap-1 border-b px-3.5 py-3 text-left"
                   style={{
                     borderColor: 'var(--app-border)',
-                    background: active.id === m.id ? 'var(--app-surface-2)' : 'transparent',
+                    background: openMail.id === m.id ? 'var(--app-surface-2)' : undefined,
                   }}
                 >
                   <div className="flex items-center justify-between">
@@ -97,33 +112,46 @@ export default function EmailApp() {
             ))}
           </ul>
 
-          <article className="app-scroll min-w-0 overflow-y-auto p-5">
+          <article
+            className="app-scroll min-w-0 overflow-y-auto p-5"
+            style={{ display: showList && !isDesktop ? 'none' : 'block' }}
+          >
+            <Button
+              size="sm"
+              variant="ghost"
+              color="default"
+              startContent={<ArrowLeft size={14} />}
+              className="mb-4 lg:hidden"
+              onPress={() => setActive(null)}
+            >
+              Back to inbox
+            </Button>
             <div className="flex items-start justify-between gap-3">
               <h2 className="text-lg font-semibold" style={{ color: 'var(--app-heading)' }}>
-                {active.subject}
+                {openMail.subject}
               </h2>
               <Chip size="sm" variant="soft" color="default">
-                {active.tag}
+                {openMail.tag}
               </Chip>
             </div>
             <div className="mt-4 flex items-center gap-3">
-              <Avatar size={38} src={active.avatar} name={active.from} />
+              <Avatar size={38} src={openMail.avatar} name={openMail.from} />
               <div>
                 <div className="text-[13px] font-medium" style={{ color: 'var(--app-fg-strong)' }}>
-                  {active.from}
+                  {openMail.from}
                 </div>
                 <div className="text-xs" style={{ color: 'var(--app-fg-muted)' }}>
-                  to me · {active.date}
+                  to me · {openMail.date}
                 </div>
               </div>
             </div>
             <div className="mt-5 space-y-3 text-[13px] leading-relaxed" style={{ color: 'var(--app-fg)' }}>
-              <p>{active.preview}</p>
+              <p>{openMail.preview}</p>
               <p>
                 We should align on the numbers before the leadership review. I’ve attached a draft — feel
                 free to leave comments directly.
               </p>
-              <p>Best,<br />{active.from}</p>
+              <p>Best,<br />{openMail.from}</p>
             </div>
             <div className="mt-6 flex gap-2">
               <Button size="sm" variant="bordered" color="default" startContent={<Reply size={14} />}>

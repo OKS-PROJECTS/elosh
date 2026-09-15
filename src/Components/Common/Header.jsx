@@ -164,7 +164,11 @@ export default function Header({ onMenuClick, onCollapseToggle }) {
 
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
-            <button className="ml-1 rounded-full" aria-label="Account menu">
+            <button
+              className="ml-1 rounded-full transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              style={{ outlineColor: 'var(--app-accent)' }}
+              aria-label="Account menu"
+            >
               <Avatar size={32} src={avatarUrl(7)} name="Adrian Park" />
             </button>
           </DropdownTrigger>

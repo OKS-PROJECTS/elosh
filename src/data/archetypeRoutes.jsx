@@ -5,14 +5,17 @@ import { LIST_CONFIGS } from './lists'
 import { EXTRA_LIST_CONFIGS } from './listsExtra'
 import { SETTINGS_CONFIGS } from './settings'
 import { REPORT_CONFIGS } from './reports'
+import { FORM_CONFIGS } from './forms'
 
 const ListPage = lazy(() => import('../Pages/InnerPages/ListPage'))
 const SettingsPage = lazy(() => import('../Pages/InnerPages/SettingsPage'))
 const ReportPage = lazy(() => import('../Pages/InnerPages/ReportPage'))
+const FormPage = lazy(() => import('../Pages/InnerPages/FormPage'))
 
 const ALL_LISTS = { ...LIST_CONFIGS, ...EXTRA_LIST_CONFIGS }
 
 export const listRoutePaths = Object.keys(ALL_LISTS)
+export const formRoutePaths = Object.keys(FORM_CONFIGS)
 export const settingsRoutePaths = Object.keys(SETTINGS_CONFIGS)
 export const reportRoutePaths = Object.keys(REPORT_CONFIGS)
 
@@ -20,6 +23,7 @@ export const configuredRoutePaths = [
   ...listRoutePaths,
   ...settingsRoutePaths,
   ...reportRoutePaths,
+  ...formRoutePaths,
 ]
 
 export const archetypeRoutes = [
@@ -31,5 +35,8 @@ export const archetypeRoutes = [
   )),
   ...reportRoutePaths.map((p) => (
     <Route key={p} path={p} element={<ReportPage config={REPORT_CONFIGS[p]} />} />
+  )),
+  ...formRoutePaths.map((p) => (
+    <Route key={p} path={p} element={<FormPage config={FORM_CONFIGS[p]} />} />
   )),
 ]

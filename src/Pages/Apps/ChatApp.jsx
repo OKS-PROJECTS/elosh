@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { MessageList, Message, TextField, Button, Avatar } from 'oks-ui'
-import { Send } from 'lucide-react'
+import { Send, ArrowLeft } from 'lucide-react'
 import { PageHeader, Surface } from '../../Components/ui'
 import { employees } from '../../data/mock'
+import { useIsDesktop } from '../../lib/useMediaQuery'
 
 const THREADS = employees.slice(0, 8).map((e, i) => ({
   id: e.id,
@@ -20,9 +21,12 @@ const SEED = [
 ]
 
 export default function ChatApp() {
-  const [active, setActive] = useState(THREADS[0])
+  const isDesktop = useIsDesktop()
+  const [active, setActive] = useState(null)
   const [messages, setMessages] = useState(SEED)
   const [draft, setDraft] = useState('')
+  const openThread = active ?? THREADS[0]
+  const showList = isDesktop || active === null
 
   const send = () => {
     if (!draft.trim()) return
@@ -35,7 +39,10 @@ export default function ChatApp() {
       <PageHeader title="Chat" />
       <Surface bodyClassName="p-0">
         <div className="grid h-[70vh] grid-cols-1 lg:grid-cols-[280px_1fr]">
-          <div className="hidden flex-col border-r lg:flex" style={{ borderColor: 'var(--app-border)' }}>
+          <div
+            className="flex-col border-r lg:flex"
+            style={{ borderColor: 'var(--app-border)', display: showList ? 'flex' : 'none' }}
+          >
             <div className="border-b p-3" style={{ borderColor: 'var(--app-border)' }}>
               <TextField size="sm" variant="filled" placeholder="Search conversations" aria-label="Search" />
             </div>
@@ -44,10 +51,11 @@ export default function ChatApp() {
                 <li key={t.id}>
                   <button
                     onClick={() => setActive(t)}
-                    className="flex w-full items-center gap-3 border-b px-3 py-2.5 text-left"
+                    aria-current={openThread.id === t.id ? 'true' : undefined}
+                    className="elosh-row-btn flex w-full items-center gap-3 border-b px-3 py-2.5 text-left"
                     style={{
                       borderColor: 'var(--app-border)',
-                      background: active.id === t.id ? 'var(--app-surface-2)' : 'transparent',
+                      background: openThread.id === t.id ? 'var(--app-surface-2)' : undefined,
                     }}
                   >
                     <Avatar size={34} src={t.avatar} name={t.name} />
@@ -73,11 +81,25 @@ export default function ChatApp() {
             </ul>
           </div>
 
-          <div className="flex min-w-0 flex-col">
+          <div
+            className="min-w-0 flex-col lg:flex"
+            style={{ display: showList && !isDesktop ? 'none' : 'flex' }}
+          >
             <div className="flex items-center gap-3 border-b p-3" style={{ borderColor: 'var(--app-border)' }}>
-              <Avatar size={34} src={active.avatar} name={active.name} status="online" />
+              <Button
+                isIconOnly
+                size="sm"
+                variant="ghost"
+                color="default"
+                aria-label="Back to conversations"
+                className="lg:hidden"
+                onPress={() => setActive(null)}
+              >
+                <ArrowLeft size={16} />
+              </Button>
+              <Avatar size={34} src={openThread.avatar} name={openThread.name} status="online" />
               <div className="text-[13px] font-semibold" style={{ color: 'var(--app-fg-strong)' }}>
-                {active.name}
+                {openThread.name}
               </div>
             </div>
             <div className="app-scroll min-h-0 flex-1 overflow-y-auto p-4">
