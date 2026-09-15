@@ -2,35 +2,21 @@ import { Link } from 'react-router-dom'
 import {
   Avatar,
   Button,
-  Chip,
   Progress,
   Timeline,
   TimelineItem,
   Alert,
 } from 'oks-ui'
-import {
-  Phone,
-  Mail,
-  UserRound,
-  CalendarDays,
-  Plus,
-  Cake,
-  Clock,
-} from 'lucide-react'
+import { Mail, CalendarDays, Plus, Cake, Clock } from 'lucide-react'
 import { PageHeader, Surface, DonutCard, ChartCard, MiniTable, StatusChip } from '../../Components/ui'
 import { date } from '../../lib/format'
 import * as d from '../../data/dashboard'
 
-function InfoRow({ icon: Icon, label, value }) {
+function InfoRow({ label, value }) {
   return (
-    <div className="flex items-start gap-2.5">
-      <span className="mt-0.5 text-white/50">
-        <Icon size={15} />
-      </span>
-      <div>
-        <div className="text-xs text-white/50">{label}</div>
-        <div className="text-[13px] font-medium text-white">{value}</div>
-      </div>
+    <div>
+      <div className="text-xs text-white/50">{label}</div>
+      <div className="mt-0.5 text-[13px] font-medium text-white">{value}</div>
     </div>
   )
 }
@@ -69,19 +55,16 @@ export default function EmployeeDashboard() {
           <Avatar size={64} src={d.me.avatar} name={d.me.name} isBordered />
           <div>
             <h2 className="text-lg font-semibold text-white">{d.me.name}</h2>
-            <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-white/70">
-              <span>{d.me.title}</span>
-              <Chip size="sm" variant="soft" color="primary">
-                {d.me.team}
-              </Chip>
-            </div>
+            <p className="mt-1 text-sm text-white/70">
+              {d.me.title} <span className="mx-1.5 text-white/30">•</span> {d.me.team}
+            </p>
           </div>
         </div>
-        <div className="mt-5 grid grid-cols-1 gap-4 border-t border-white/10 pt-4 sm:grid-cols-2 lg:grid-cols-4">
-          <InfoRow icon={Phone} label="Phone number" value={d.me.phone} />
-          <InfoRow icon={Mail} label="Email address" value={d.me.email} />
-          <InfoRow icon={UserRound} label="Reports to" value={d.me.reportsTo} />
-          <InfoRow icon={CalendarDays} label="Joined on" value={date(d.me.joined)} />
+        <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-x-12 sm:gap-y-4">
+          <InfoRow label="Phone number" value={d.me.phone} />
+          <InfoRow label="Email address" value={d.me.email} />
+          <InfoRow label="Reports to" value={d.me.reportsTo} />
+          <InfoRow label="Joined on" value={date(d.me.joined)} />
         </div>
       </div>
 
