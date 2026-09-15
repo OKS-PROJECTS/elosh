@@ -5,6 +5,46 @@ All notable changes to Elosh are documented here. Format based on
 
 > Requires oks-ui ^1.1.2
 
+## [1.2.0] — 2026-09-15
+
+Every primary action on the deep app pages (Chat, Email, Notes, Kanban, Calendar,
+Files) now does something real instead of being a dead button — and a genuinely
+serious oks-ui bug is fixed along the way.
+
+### Added
+- **Email**: working Compose (modal → new Sent item), per-folder filtering
+  (Inbox/Starred/Sent/Drafts/Trash with live counts), inline Reply, and Delete
+  (moves to Trash); empty-folder state.
+- **Chat**: live search filtering threads by name; each thread now has its own
+  distinct conversation history instead of all threads sharing one.
+- **Notes**: "New note" creates and selects a real note; title/body are now
+  editable in place; delete note.
+- **Kanban**: "Add card" opens a form (title, project, priority, assignee) and
+  adds a real card to the To Do column.
+- **Calendar**: "New event" opens a form (title, date via `DatePickerField`,
+  colour) and adds a real, correctly-dated event to the month grid and the
+  Upcoming list.
+- **File Manager**: "Upload" opens a real `FileField` dropzone; uploaded files
+  are added to Recent Files with a formatted size; the "more" action now removes
+  a file from the list.
+
+### Fixed
+- **Confirmed and fixed a blocker-severity oks-ui bug**: bare field components
+  (`TextField`, `SelectField`, `TextAreaField`, `DatePickerField`) silently do
+  not register with `<Form>` — only `FormFieldSet` does. Every form built with
+  bare fields inside a `<Form onSubmit>` was submitting `undefined` for every
+  field while still showing a success toast (Compose email sent to "New
+  recipient" with "(no subject)", new Kanban cards with a blank title, calendar
+  events dated to today instead of the picked date). Rebuilt every affected form
+  — Email compose/reply, Kanban add-card, Calendar new-event, and the component
+  gallery's own form-fields demo — with `FormFieldSet`. Logged upstream as
+  OKS-UI-FEEDBACK B10.
+- **A second occurrence of the `Checkbox` `width:100%` bug** (see 1.1.0): the
+  Login page's "Remember me" checkbox was squeezing "Forgot password?" into a
+  wrapped, squashed column next to it — reported live by a user screenshot.
+  Fixed the same way (`w-auto shrink-0`); updated OKS-UI-FEEDBACK B9 to note a
+  labelled `Checkbox` is just as affected as an unlabelled one.
+
 ## [1.1.0] — 2026-09-15
 
 Step 6b design-quality sweep: states, dark mode, and a real mobile pass on the

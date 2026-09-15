@@ -10,7 +10,6 @@ import {
   RangeField,
   SelectField,
   TextField,
-  TextAreaField,
   Calendar,
   toast,
 } from 'oks-ui'
@@ -56,9 +55,11 @@ export default function KitchenSink() {
         </Surface>
 
         <Surface title="Form fields">
-          <Form onSubmit={() => toast.success('Submitted')} className="flex w-full flex-col gap-4">
-            <TextField label="Full name" placeholder="Aria Bennett" />
-            <SelectField
+          <Form onSubmit={(data) => toast.success(`Submitted for ${data.name || '—'}`)} className="flex w-full flex-col gap-4">
+            <FormFieldSet type="text" name="name" label="Full name" placeholder="Aria Bennett" />
+            <FormFieldSet
+              type="select"
+              name="department"
               label="Department"
               placeholderOption="Select a department"
               options={[
@@ -67,7 +68,7 @@ export default function KitchenSink() {
                 { label: 'Product', value: 'product' },
               ]}
             />
-            <TextAreaField label="Notes" showLengthCounter maxLength={200} />
+            <FormFieldSet type="textarea" name="notes" label="Notes" showLengthCounter maxLength={200} />
             <FormFieldSet type="otp" name="code" label="Verification code" length={4} />
             <Button type="submit" size="sm" color="primary">
               Submit

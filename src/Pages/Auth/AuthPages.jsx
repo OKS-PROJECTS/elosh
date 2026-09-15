@@ -14,8 +14,8 @@ export function Login() {
         <FormFieldSet type="email" name="email" label="Email" validation={{ rules: { required: true, email: true } }} />
         <FormFieldSet type="password" name="password" label="Password" validation={{ rules: { required: true } }} />
         <div className="flex items-center justify-between">
-          <Checkbox label="Remember me" />
-          <Link to="/auth/forgot-password" className="elosh-link text-[13px]">
+          <Checkbox label="Remember me" className="w-auto shrink-0" />
+          <Link to="/auth/forgot-password" className="elosh-link shrink-0 whitespace-nowrap text-[13px]">
             Forgot password?
           </Link>
         </div>
