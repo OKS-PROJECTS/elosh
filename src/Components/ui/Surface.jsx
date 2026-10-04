@@ -42,9 +42,9 @@ export default function Surface({
         >
           <div className="min-w-0">
             {title && (
-              <h3 className="truncate text-[17px] font-semibold" style={{ color: 'var(--app-heading)' }}>
+              <h2 className="truncate text-[17px] font-semibold" style={{ color: 'var(--app-heading)' }}>
                 {title}
-              </h3>
+              </h2>
             )}
             {subtitle && (
               <p className="mt-0.5 text-[13px]" style={{ color: 'var(--app-fg-muted)' }}>

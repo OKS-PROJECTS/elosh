@@ -4,7 +4,7 @@ import Logo from '../../Components/Common/Logo'
 
 function ErrorShell({ code, title, message, action }) {
   return (
-    <div
+    <main
       className="flex min-h-full flex-col items-center justify-center gap-4 p-8 text-center"
       style={{ background: 'var(--app-bg)' }}
     >
@@ -19,7 +19,7 @@ function ErrorShell({ code, title, message, action }) {
         {message}
       </p>
       {action}
-    </div>
+    </main>
   )
 }
 

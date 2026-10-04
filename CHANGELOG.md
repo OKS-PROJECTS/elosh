@@ -3,7 +3,22 @@
 All notable changes to Elosh are documented here. Format based on
 [Keep a Changelog](https://keepachangelog.com/); this project adheres to SemVer.
 
-> Requires oks-ui ^1.1.2
+> Requires oks-ui ^1.3.2
+
+## [1.2.1] — 2026-10-04
+
+### Changed
+
+- Updated to oks-ui `^1.3.2`.
+
+### Fixed
+
+- Text contrast meets WCAG AA (4.5:1) in light and dark: muted and subtle text,
+  menu headings, accent, status colours, soft chips and stat deltas.
+- Dark theme mirrors the brand, success, warning, danger and info ramps, so
+  labels on filled buttons and badges stay readable.
+- Auth and error screens have a `<main>` landmark, and card titles use `h2`
+  so heading order no longer skips a level.
 
 ## [1.2.0] — 2026-09-15
 

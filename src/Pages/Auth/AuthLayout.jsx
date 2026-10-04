@@ -5,7 +5,7 @@ import Logo from '../../Components/Common/Logo'
 export default function AuthLayout({ title, subtitle, children, footer }) {
   return (
     <div className="grid min-h-full lg:grid-cols-2" style={{ background: 'var(--app-bg)' }}>
-      <div
+      <aside
         className="relative hidden flex-col justify-between p-10 lg:flex"
         style={{ background: '#1c2434' }}
       >
@@ -14,15 +14,15 @@ export default function AuthLayout({ title, subtitle, children, footer }) {
           <h2 className="max-w-sm text-2xl font-semibold text-white">
             Everything your people team needs, in one place.
           </h2>
-          <p className="mt-3 max-w-sm text-sm text-white/60">
+          <p className="mt-3 max-w-sm text-sm text-white/75">
             Elosh brings HR, payroll, recruitment and performance together — built entirely with
             oks-ui components.
           </p>
         </div>
-        <p className="text-xs text-white/40">© {new Date().getFullYear()} Elosh</p>
-      </div>
+        <p className="text-xs text-white/70">© {new Date().getFullYear()} Elosh</p>
+      </aside>
 
-      <div className="flex items-center justify-center p-6 sm:p-10">
+      <main className="flex items-center justify-center p-6 sm:p-10">
         <div className="w-full max-w-sm">
           <div className="mb-6 lg:hidden">
             <Logo />
@@ -42,7 +42,7 @@ export default function AuthLayout({ title, subtitle, children, footer }) {
             </p>
           )}
         </div>
-      </div>
+      </main>
     </div>
   )
 }

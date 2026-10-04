@@ -42,9 +42,9 @@ export function PricingPage() {
         {PLANS.map((p) => (
           <Surface key={p.name} className={p.tag === 'Popular' ? 'ring-2' : ''}>
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-semibold" style={{ color: 'var(--app-heading)' }}>
+              <h2 className="text-base font-semibold" style={{ color: 'var(--app-heading)' }}>
                 {p.name}
-              </h3>
+              </h2>
               <Chip size="sm" variant="soft" color={p.tag === 'Popular' ? 'primary' : 'default'}>
                 {p.tag}
               </Chip>

@@ -50,8 +50,8 @@
   --oks-color-success-300: #49d888;
   --oks-color-success-400: #1fcf6e;
   --oks-color-success-500: #03c95a;
-  --oks-color-success-600: #02a448;
-  --oks-color-success-700: #027e38;
+  --oks-color-success-600: #028039;
+  --oks-color-success-700: #026a30;
   --oks-color-success-800: #01602b;
   --oks-color-success-900: #014d23;
   --oks-color-success-950: #002912;
@@ -64,7 +64,7 @@
   --oks-color-warning-400: #ffc922;
   --oks-color-warning-500: #ffc107;
   --oks-color-warning-600: #d69e00;
-  --oks-color-warning-700: #a87c00;
+  --oks-color-warning-700: #8f6a00;
   --oks-color-warning-800: #7a5a00;
   --oks-color-warning-900: #5c4400;
   --oks-color-warning-950: #302300;
@@ -117,8 +117,8 @@
 
   --app-fg-strong: #111827;
   --app-fg: #4b5563;
-  --app-fg-muted: #6b7280;
-  --app-fg-subtle: #9ca3af;
+  --app-fg-muted: #566070;
+  --app-fg-subtle: #686f7d;
   --app-heading: #202c4b;
 
   --app-card-radius: 6px;
@@ -128,11 +128,11 @@
   /* sidebar / menu */
   --app-menu-bg: #ffffff;
   --app-menu-fg: #111827;
-  --app-menu-fg-muted: #67748e;
+  --app-menu-fg-muted: #626e88;
   --app-menu-active-bg: #f4f5f7;
-  --app-menu-active-fg: #f26522;
+  --app-menu-active-fg: #b94c16;
   --app-menu-border: #ededed;
-  --app-menu-heading: #99a1b7;
+  --app-menu-heading: #6e7484;
 
   /* header */
   --app-header-bg: #ffffff;
@@ -141,21 +141,21 @@
   --app-header-border: #ededed;
 
   /* accent aliases */
-  --app-accent: #f26522;
+  --app-accent: #b94c16;
   --app-accent-soft: #fef1eb;
-  --app-ok: #03c95a;
+  --app-ok: #007f32;
   --app-ok-soft: #e8faf0;
-  --app-warn: #ffc107;
+  --app-warn: #906b00;
   --app-warn-soft: #fff9e9;
-  --app-bad: #e70d0d;
+  --app-bad: #d30909;
   --app-bad-soft: #fae7e7;
-  --app-info: #1b84ff;
+  --app-info: #1269d1;
   --app-info-soft: #ebf4ff;
-  --app-purple: #ab47bc;
+  --app-purple: #a343b4;
   --app-purple-soft: #f7eef9;
-  --app-pink: #fd3995;
+  --app-pink: #c52a74;
   --app-pink-soft: #ffedf6;
-  --app-teal: #02c7d2;
+  --app-teal: #007b82;
   --app-teal-soft: #e6f9ff;
 
   /* semantic role aliases (reference other --app-* so they cascade to dark) */
@@ -184,6 +184,62 @@
    Dark theme — redefine the whole --app-* layer + oks-ui light-only tokens
    ========================================================================== */
 :root[data-theme='dark'] {
+  /* ramps mirrored for dark: fills use the light shades, so labels on them stay dark */
+  --oks-palette-brand-50: #411407;
+  --oks-palette-brand-100: #782e12;
+  --oks-palette-brand-200: #953311;
+  --oks-palette-brand-300: #bb3d0c;
+  --oks-palette-brand-400: #e14e0c;
+  --oks-palette-brand-600: #f57f47;
+  --oks-palette-brand-700: #f89d6f;
+  --oks-palette-brand-800: #fbc2a6;
+  --oks-palette-brand-900: #fddfd0;
+  --oks-palette-brand-950: #fef1eb;
+
+  --oks-color-success-50: #002912;
+  --oks-color-success-100: #014d23;
+  --oks-color-success-200: #01602b;
+  --oks-color-success-300: #026a30;
+  --oks-color-success-400: #028039;
+  --oks-color-success-600: #1fcf6e;
+  --oks-color-success-700: #49d888;
+  --oks-color-success-800: #86e5b0;
+  --oks-color-success-900: #c2f2d8;
+  --oks-color-success-950: #e8faf0;
+
+  --oks-color-warning-50: #302300;
+  --oks-color-warning-100: #5c4400;
+  --oks-color-warning-200: #7a5a00;
+  --oks-color-warning-300: #8f6a00;
+  --oks-color-warning-400: #d69e00;
+  --oks-color-warning-600: #ffc922;
+  --oks-color-warning-700: #ffd452;
+  --oks-color-warning-800: #ffe28a;
+  --oks-color-warning-900: #fff0c2;
+  --oks-color-warning-950: #fff9e9;
+
+  --oks-color-danger-50: #2e0202;
+  --oks-color-danger-100: #560909;
+  --oks-color-danger-200: #6e0808;
+  --oks-color-danger-300: #970808;
+  --oks-color-danger-400: #c40808;
+  --oks-color-danger-600: #e53838;
+  --oks-color-danger-700: #ea6363;
+  --oks-color-danger-800: #f19595;
+  --oks-color-danger-900: #f8c6c6;
+  --oks-color-danger-950: #fceaea;
+
+  --oks-color-info-50: #001a3b;
+  --oks-color-info-100: #00306b;
+  --oks-color-info-200: #003d87;
+  --oks-color-info-300: #004ead;
+  --oks-color-info-400: #0065e0;
+  --oks-color-info-600: #4299ff;
+  --oks-color-info-700: #6daeff;
+  --oks-color-info-800: #a3ccff;
+  --oks-color-info-900: #cfe4ff;
+  --oks-color-info-950: #ebf4ff;
+
   --app-bg: #0b0f14;
   --app-surface: #151b23;
   --app-surface-2: #1c232d;
@@ -193,7 +249,7 @@
   --app-fg-strong: #f1f5f9;
   --app-fg: #c4ccd6;
   --app-fg-muted: #94a1b2;
-  --app-fg-subtle: #6b7684;
+  --app-fg-subtle: #8a96a6;
   --app-heading: #e8edf3;
 
   --app-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -202,9 +258,17 @@
   --app-menu-fg: #e8edf3;
   --app-menu-fg-muted: #94a1b2;
   --app-menu-active-bg: #1f2731;
+  --app-accent: #f26522;
+  --app-ok: #03c95a;
+  --app-warn: #ffc107;
+  --app-bad: #ff6b6b;
+  --app-info: #1b84ff;
+  --app-purple: #ab47bc;
+  --app-pink: #fd3995;
+  --app-teal: #02c7d2;
   --app-menu-active-fg: #f8895a;
   --app-menu-border: #262f3a;
-  --app-menu-heading: #6b7684;
+  --app-menu-heading: #8a96a6;
 
   --app-header-bg: #151b23;
   --app-header-border: #262f3a;
