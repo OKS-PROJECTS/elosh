@@ -3,7 +3,13 @@
 All notable changes to Elosh are documented here. Format based on
 [Keep a Changelog](https://keepachangelog.com/); this project adheres to SemVer.
 
-> Requires oks-ui ^1.3.2
+> Requires oks-ui ^1.6.0
+
+## [1.2.2] — 2026-11-10
+
+### Changed
+
+- Updated to oks-ui `^1.6.0` (from `^1.3.2`).
 
 ## [1.2.1] — 2026-10-04
 
